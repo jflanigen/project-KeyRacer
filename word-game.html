@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Type Match</title>
-    <link rel="stylesheet" href="stylefile.css">
-</head>
-<body>
-    <fieldset class="headerbox">
-        <h1 class="header">Type Race</h1>
-    </fieldset>
-</body>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Type Match</title>
+        <link rel="stylesheet" href="stylefile.css">
+    </head>
+
+    <body>
+        <script src="js-support.js"></script>
+        <fieldset class="headerbox">
+            <h1 class="header">Type Race</h1>
+        </fieldset>
+        <div class="startButton"><button id="startGame" onclick="generateWord()">start</button></div>
+        <div id="currentRandomWord" class="generatedWord"></div>
+    </body>
+
 </html>

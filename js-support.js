@@ -19,13 +19,13 @@ function generateWord(){
         .then(data => {
             const randomWord = data[0];
             console.log(randomWord);
+            document.getElementById('currentRandomWord').innerText = randomWord;
         })
         .catch(error => {
             console.error(error);
+            document.getElementById('currentRandomWord').innerText = 'Error fetching random word.';
         });
 }
-
-generateWord();
 
 
 
