@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Type Match</title>
+        <title>Type Race Game</title>
         <link rel="stylesheet" href="stylefile.css">
     </head>
 
@@ -13,7 +13,12 @@
         <fieldset class="headerbox">
             <h1 class="header">Type Race</h1>
         </fieldset>
-        <div class="startButton"><button id="startGame" onclick="generateWord()">start</button></div>
+        <div class="startButton"><button id="startGame" onclick="generateWord()">start</button>
+            <p class="buttonInstructions">(press enter or click)</p>
+            <input type="text" id="userInput" oninput="checkUserInput()">
+        </div>
+        
+        
         <div id="currentRandomWord" class="generatedWord"></div>
     </body>
 
