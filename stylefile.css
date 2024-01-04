@@ -1,7 +1,7 @@
 body {
-    max-height: 100vh;
-    max-width: 100vw;
-    background-color: rgba(140, 140, 140, 0.9);
+    overflow: hidden;
+    height: 100vh;
+    background: linear-gradient(to top left, lightslategray, azure);
     border-left: 4px solid rgba(40, 40, 40, 0.25);
     border-right: 4px solid rgba(40, 40, 40, 0.25);
     padding-left: 15px;
@@ -37,6 +37,15 @@ body {
     font-size: 36px;
     font-family: Verdana;
     color: black;
+    margin: 10px auto 10px;
+}
+
+#userInput {
+    text-align: center;
+    font-size: 36px;
+    font-family: Verdana;
+    background: none;
+    border: 0;
     margin: 10px auto 10px;
 }
 
