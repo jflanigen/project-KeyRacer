@@ -18,7 +18,7 @@ function generateWord(){
             return response.json();
         })
         .then(data => {
-            const randomWord = data[0];
+            const randomWord = data;
             console.log(randomWord);
         })
         .catch(error => {
@@ -62,21 +62,12 @@ document.addEventListener('keydown', function(event) {
 
 
 var randomWords = new Array(20);
-
 function fillArray(){
     for(let i = 0; i < randomWords.length; i++){
         randomWords[i] = generateWord();
     }
 }
 
-function waitForSubmission(){
-    return new Promise((resolve, reject) => {
-        document.getElementById('userInput').addEventListener('click', () =>{
-            console.log('check user input');
-            resolve();
-        });
-    });
-}
 
 // execGame(): function to run each game session
 function execGame(){
@@ -95,8 +86,6 @@ function execGame(){
     let travRWs = 0;
 
     while(lettersMatch == true && travRWs < 20){
-        
-        await(waitForSubmission());
 
         if(checkInput == true){
             totalNumCharsCorrect += randomWords[travRWs].length;
@@ -118,3 +107,5 @@ function execGame(){
     // Accuracy calculation (% of characters correct)
     let accuracy = totalNumCharsCorrect / totalNumChars;
 }
+
+generateWord();
