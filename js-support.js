@@ -27,13 +27,6 @@ function generateWord(){
         });
 }
 
-// assembles array wordArray for random words
-function fillArray(array){
-    for(let i = 0; i < array.length; i++){
-        array[i] = generateWord();
-    }
-}
-
 // checkInput(): used to manipulate boolean lettersMatch in execGame()
 function checkInput(userInput, randomWord){
     if(userInput == randomWord){
@@ -45,29 +38,49 @@ function checkInput(userInput, randomWord){
 }
 
 // for start button
+var enterPressed = false;
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
-        // click execGame() button to start session
-        document.getElementById('execGame').click();
-
-        // disable execGame button so new sessions are not
-        // started every time enter is pressed
-        document.getElementById('execGame').disabled = true;
-
-        // focus on userInput box.
-        document.getElementById('userInput').click();
-        document.getElementById('userInput').focus();
+        if(!enterPressed){
+            // click execGame() button to start session
+            document.getElementById('execGame').click();
+            enterPressed = true;
+        } else {
+            // focus on userInput box.
+            document.getElementById('userInput').click();
+        }
+        document.getElementById('userInput').focus()
     }
 });
 
+/*
 
+    BELOW: execGame() and other game logic implementation, 
+           no more support functions 
+
+*/
+
+
+var randomWords = new Array(20);
+
+function fillArray(){
+    for(let i = 0; i < randomWords.length; i++){
+        randomWords[i] = generateWord();
+    }
+}
+
+function waitForSubmission(){
+    return new Promise((resolve, reject) => {
+        document.getElementById('userInput').addEventListener('click', () =>{
+            console.log('check user input');
+            resolve();
+        });
+    });
+}
 
 // execGame(): function to run each game session
 function execGame(){
 
-    // initialize randomWords from api
-    randomWords = new Array(20);
-    fillArray(randomWords);
     // while no mismatch in word typed, used for game status
     let lettersMatch = true;
 
@@ -76,15 +89,18 @@ function execGame(){
     const startTime = Date.now();
 
     // will be used for accuracy calculation
-    let correctlySolvedWord = 0;
     let totalNumCharsCorrect = 0;
 
     // travRWs used to traverse through randomWords
     let travRWs = 0;
 
     while(lettersMatch == true && travRWs < 20){
+        
+        await(waitForSubmission());
+
         if(checkInput == true){
             totalNumCharsCorrect += randomWords[travRWs].length;
+            travRWs++;
         } else {
             // for loop for finding out which characters were correct and which were not from incorrect word
             for(let i = 0; i < randomWords[travRWs].length; i++){
@@ -96,7 +112,7 @@ function execGame(){
         }
         totalNumChars += randomWords[travRWs].length;
     }
-    
+
     // Words per minute calculation
     let WPM = totalNumChars / (Date.now() - startTime);
     // Accuracy calculation (% of characters correct)
