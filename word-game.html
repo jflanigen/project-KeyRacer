@@ -14,11 +14,10 @@
             <h1 class="header">Type Race</h1>
         </fieldset>
         <div class="startButton">
-            <button id="startGame" onclick="generateWord()">start</button>
+            <button id="startGame" onclick="execGame()">start</button>
             <p class="buttonInstructions">(press enter or click)</p>
-            <input type="text" id="userInput" oninput="checkUserInput()">
+            <input type="text" id="userInput" onclick="checkUserInput()">
         </div>
-        
         
         <div id="currentRandomWord" class="generatedWord"></div>
     </body>

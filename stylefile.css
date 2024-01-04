@@ -45,8 +45,9 @@ body {
     font-size: 36px;
     font-family: Verdana;
     background: none;
-    border: 0;
+    border: 0px none white;
     margin: 10px auto 10px;
+
 }
 
 #startGame {
