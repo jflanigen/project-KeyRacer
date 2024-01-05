@@ -8,25 +8,31 @@
         <link rel="stylesheet" href="stylefile.css">
     </head>
 
-    <body onload="fillArray()">
+    <body>
         <script src="js-support.js"></script>
-        
         <fieldset class="headerbox">
             <h1 class="header">Type Race</h1>
         </fieldset>
 
-        <div id="numRequest">
+
+        <div id="P_NUMREQ">
             <label for="numInput">Number of words? (1-20)</label>
-            <input type="number" id="numInput" name="numInput" min="1" max="20" oninput="switchContent()">
+            <input type="number" id="numInput" name="numInput" min="1" max="20" oninput="switchToP_EXEC()">
         </div>
-        <div id="content">
+
+
+        <div id="P_EXECGAME" style="display: none">
             <div class="startButton">
-                <button id="execGame" onclick="execGame()">start</button>
-                <p class="buttonInstructions">(press enter or click)</p>
-                <input type="text" id="userInput" onclick="checkInput()">
+                <button id="execGame" name="execGame" onclick="execGame()">start</button>
+                <label for="execGame" class="buttonInstructions">(press enter or click)</label>
             </div>
-            
+        </div>
+
+
+        <div id="P_RUNGAME" style="display: none">
             <div id="currentRandomWord" class="generatedWord"></div>
+            <input type="text" id="userInput" onclick="checkInput()">
+            
         </div>
     </body>
 

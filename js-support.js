@@ -6,10 +6,10 @@
  */
 
 // Random word API url
-const api_url = 'https://random-word-api.herokuapp.com/word?number=20';
+var api_url_base = 'https://random-word-api.herokuapp.com/word?number=';
 
 // generateWord(): fetch random word using random word api 
-function generateWord(){
+function generateWord(api_url){
     fetch(api_url)
         .then(response => {
             if(!response.ok){
@@ -27,85 +27,60 @@ function generateWord(){
         });
 }
 
-// checkInput(): used to manipulate boolean lettersMatch in execGame()
-function checkInput(userInput, randomWord){
-    if(userInput == randomWord){
-        return true;
-    }
-    else {
-        return false;
-    }
+// numChars for accuracy calculation
+var numChars = 0;
+var numCharsCorrect = 0;
+// generated words and traversal
+var randomWords = [];
+var trav = 0;
+
+/**
+ *  switchToP_EXEC(): Triggered when on P_NUMREQ and after user has
+ *                    has inputted their desired number of words.
+ * 
+ *                    should 'change the page' and generate words using
+ *                    adjusted url for the input integer by the user
+ */
+
+function switchToP_EXEC(){
+    // after finding out how many words the user wants,
+    // add it to the end of the API url as necessary.
+    api_url = api_url_base + document.getElementById('numInput')
+
+    // display P_EXEC button 'page' and generate randomWords
+    document.getElementById('P_NUMREQ').display.style = 'none';
+    document.getElementById('P_EXECGAME').display.style = 'block';
+    randomWords = generateWord(api_url);
 }
 
-/*/ for start button
-var enterPressed = false;
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        if(!enterPressed){
-            // click execGame() button to start session
-            document.getElementById('execGame').click();
-            enterPressed = true;
-        } else {
-            // focus on userInput box.
-            document.getElementById('userInput').click();
+function submitUserWord(){
+    let currentWord = document.getElementById('currentRandomWord');
+
+    // compute new numChars and numCharsCorrect
+    numChars += currentWord.length;
+    for(let i = 0; i < currentWord.length; i++){
+        if(currentWord.charAt(i) === document.getElementById('userInput').charAt(i)){
+            numCharsCorrect += 1;
         }
-        document.getElementById('userInput').focus()
     }
-});
 
-/*
-
-    BELOW: execGame() and other game logic implementation, 
-           no more support functions 
-
-*/
-
-
-var randomWords = new Array(20);
-function fillArray(){
-    for(let i = 0; i < randomWords.length; i++){
-        randomWords[i] = generateWord();
-    }
+    trav += 1;
 }
-
 
 // execGame(): function to run each game session
 function execGame(){
 
-    // while no mismatch in word typed, used for game status
-    let lettersMatch = true;
+    document.getElementById('P_EXECGAME').display.style = 'none';
+    document.getElementById('P_RUNGAME').display.style = 'block';
 
-    // will be used for WPM calculation
-    let totalNumChars = 0;
-    const startTime = Date.now();
+    // used for WPM calculations
+    let startTime = Date.now();
 
-    // will be used for accuracy calculation
-    let totalNumCharsCorrect = 0;
-
-    // travRWs used to traverse through randomWords
-    let travRWs = 0;
-
-    while(lettersMatch == true && travRWs < 20){
-
-        if(checkInput == true){
-            totalNumCharsCorrect += randomWords[travRWs].length;
-            travRWs++;
-        } else {
-            // for loop for finding out which characters were correct and which were not from incorrect word
-            for(let i = 0; i < randomWords[travRWs].length; i++){
-                if(randomWords[travRWs].charAt(i) == document.getElementById('userInput').value.charAt(i)){
-                    totalNumCharsCorrect += 1;
-                }
-            }
-            lettersMatch = false();
-        }
-        totalNumChars += randomWords[travRWs].length;
+    while(trav < randomWords.length){
+        let currentWord = randomWords[trav];
+        document.getElementById('currentRandomWord') = currentWord;
     }
 
-    // Words per minute calculation
-    let WPM = totalNumChars / (Date.now() - startTime);
-    // Accuracy calculation (% of characters correct)
-    let accuracy = totalNumCharsCorrect / totalNumChars;
-}
+    
 
-generateWord();
+}
