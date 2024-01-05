@@ -37,6 +37,7 @@ var startTime = 0;
 
 // generated words and traversal
 var randomWords = [];
+var userWords = [];
 var currentRandomWord = '';
 var trav = 0;
 
@@ -60,6 +61,7 @@ function switchToP_EXEC(){
     generateWord(api_url).then(data => {
         randomWords = data;
     });
+
 }
 
 
@@ -69,29 +71,26 @@ function switchToP_EXEC(){
  *                    adjust the traversal integer.
  */
 function submitUserWord() {
-    let currentWord = document.getElementById('currentRandomWord').value;
-    // compute new numChars and numCharsCorrect
-    numChars += currentWord.length;
-    for(let i = 0; i < currentWord.length; i++){
-        if(currentWord.charAt(i) === document.getElementById('userInput').value.charAt(i)){
+    // acquire user's submitted word and empty input, store users word in array
+    let submittedWord = document.getElementById('userInput').value;
+    document.getElementById('userInput').value = '';
+    userWords.push(submittedWord);
+
+    numChars += submittedWord.length;
+
+    for(let i = 0; i < document.getElementById('currentRandomWord').innerText.length; i++){
+        if(submittedWord.charAt(i) === document.getElementById('currentRandomWord').innerText.charAt(i)){
             numCharsCorrect += 1;
         }
     }
 
-    trav += 1;
-    console.log("BPcgs");
-
-    if(trav < randomWords.length){
-        curentRandomWord = randomWords[trav];
-        document.getElementById('currentRandomWord').innerText = currentRandomWord;
-        document.getElementById('currentRandomWord').value = currentRandomWord;
+    if(randomWords.length > 1){
+        randomWords.shift();
+        document.getElementById('currentRandomWord').innerText = randomWords[0];
     } else {
-        console.log();
-        // set WPM ACC and NUM values
         let WPM = numChars / Date.now() - startTime;
         let ACC = numCharsCorrect / numChars;
         let NUM = document.getElementById('numInput').value;
-
 
         document.getElementById('WPM').innerText = WPM;
         document.getElementById('ACC').innerText = ACC;
@@ -100,12 +99,8 @@ function submitUserWord() {
         // display the above values and give restart option.
         document.getElementById('stats').style.display = 'inline-block';
         document.getElementById('restartButton').style.display = 'block';
-
-        trav = 0;
     }
-
-};
-
+}
 
 // execGame(): function to run each game session
 function execGame(){
@@ -117,6 +112,5 @@ function execGame(){
     startTime = Date.now();
 
     currentRandomWord = randomWords[0];
-    document.getElementById('currentRandomWord').value = currentRandomWord;
     document.getElementById('currentRandomWord').innerText = currentRandomWord;
 }
