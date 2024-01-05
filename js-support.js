@@ -32,6 +32,7 @@ async function generateWord(api_url) {
 
 // numChars for accuracy calculation
 var numChars = 0;
+var userCharsTyped = 0;
 var numCharsCorrect = 0;
 var startTime = 0;
 
@@ -86,18 +87,23 @@ function execGame(){
  *  > endGame() and contGame() below, used for submitUserWord() game flow.
  */
 function submitUserWord() {
+    let correctWord = document.getElementById('currentRandomWord').innerText;
     // acquire user's submitted word and empty input, store users word in array
     let submittedWord = document.getElementById('userInput').value;
     document.getElementById('userInput').value = '';
     userWords.push(submittedWord);
-
-    numChars += submittedWord.length;
-
-    for(let i = 0; i < document.getElementById('currentRandomWord').innerText.length; i++){
-        if(submittedWord.charAt(i) === document.getElementById('currentRandomWord').innerText.charAt(i)){
+    
+    for(let i = 0; i < correctWord.length; i++){
+        if(submittedWord.charAt(i) == correctWord.charAt(i)){
             numCharsCorrect += 1;
         }
     }
+    if(submittedWord.length < correctWord.length){
+        numChars += correctWord.length;
+    } else {
+        numChars += submittedWord.length;
+    }
+    userCharsTyped = submittedWord.length;
 
     if(randomWords.length > 1){
         contGame();
@@ -111,11 +117,11 @@ const plurality = n => (n <= 1 ? ' word' : ' words');
 function endGame() {
     document.getElementById('currentRandomWord').innerText = '';
 
-    let WPM = userWords.length / (Date.now() - startTime);
+    let WPM = (userCharsTyped / 5) / ((Date.now() - startTime) / 60000);
     let ACC = numCharsCorrect / numChars;
     let NUM = document.getElementById('numInput').value;
     document.getElementById('WPM').innerText += WPM;
-    document.getElementById('ACC').innerText += (ACC * 100) + '%';
+    document.getElementById('ACC').innerText += Math.round((ACC * 100)) + '%';
     document.getElementById('NUM').innerText += NUM + plurality(userWords.length);
 
     // display the above values and give restart option.
