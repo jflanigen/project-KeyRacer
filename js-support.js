@@ -6,7 +6,7 @@
  */
 
 // Random word API url
-const api_url = 'https://random-word-api.herokuapp.com/word';
+const api_url = 'https://random-word-api.herokuapp.com/word?number=20';
 
 // generateWord(): fetch random word using random word api 
 function generateWord(){
@@ -37,7 +37,7 @@ function checkInput(userInput, randomWord){
     }
 }
 
-// for start button
+/*/ for start button
 var enterPressed = false;
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
