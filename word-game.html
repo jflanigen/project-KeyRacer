@@ -17,11 +17,12 @@
 
         <div id="P_NUMREQ">
             <label for="numInput">Number of words? (1-20)</label>
-            <input type="number" id="numInput" name="numInput" min="1" max="20" oninput="switchToP_EXEC()">
+            <input type="number" id="numInput" name="numInput" min="1" max="20">
+            <button type="submit" onclick="switchToP_EXEC()"></button>
         </div>
 
 
-        <div id="P_EXECGAME" style="display: none">
+        <div id="P_EXECGAME">
             <div class="startButton">
                 <button id="execGame" name="execGame" onclick="execGame()">start</button>
                 <label for="execGame" class="buttonInstructions">(press enter or click)</label>
@@ -29,10 +30,17 @@
         </div>
 
 
-        <div id="P_RUNGAME" style="display: none">
+        <div id="P_RUNGAME">
             <div id="currentRandomWord" class="generatedWord"></div>
-            <input type="text" id="userInput" onclick="checkInput()">
-            
+            <input type="text" id="userInput" placeholder="type...">
+            <button type="submit" id="submitButton" onclick="submitUserWord()">submit</button>
+
+            <div id="stats" style="display: none">
+                <span id="WPM"></span>
+                <span id="ACC"></span>
+                <span id="NUM"></span>
+            </div>
+            <button type="submit" id="restartButton">restart game</button>
         </div>
     </body>
 
