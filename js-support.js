@@ -69,6 +69,8 @@ function switchToP_EXEC(){
  *  submitUserWord(): Triggered when on P_RUNGAME and enter key is pressed.
  *                    compute numChars and numCharsCorrect as well as
  *                    adjust the traversal integer.
+ * 
+ *  > endGame() and contGame() below, used for submitUserWord() game flow.
  */
 function submitUserWord() {
     // acquire user's submitted word and empty input, store users word in array
@@ -85,21 +87,31 @@ function submitUserWord() {
     }
 
     if(randomWords.length > 1){
-        randomWords.shift();
-        document.getElementById('currentRandomWord').innerText = randomWords[0];
+        contGame();
     } else {
-        let WPM = numChars / Date.now() - startTime;
-        let ACC = numCharsCorrect / numChars;
-        let NUM = document.getElementById('numInput').value;
-
-        document.getElementById('WPM').innerText = WPM;
-        document.getElementById('ACC').innerText = ACC;
-        document.getElementById('NUM').innerText = NUM;
-
-        // display the above values and give restart option.
-        document.getElementById('stats').style.display = 'inline-block';
-        document.getElementById('restartButton').style.display = 'block';
+        endGame();
     }
+}
+
+function endGame() {
+    document.getElementById('currentRandomWord').innerText = '';
+
+    let WPM = numChars / Date.now() - startTime;
+    let ACC = numCharsCorrect / numChars;
+    let NUM = document.getElementById('numInput').value;
+
+    document.getElementById('WPM').innerText += WPM;
+    document.getElementById('ACC').innerText += (ACC * 100) + '%';
+    document.getElementById('NUM').innerText += NUM + ' words';
+
+    // display the above values and give restart option.
+    document.getElementById('stats').style.display = 'inline-block';
+    document.getElementById('restartButton').style.display = 'block';
+}
+
+function contGame(){
+    randomWords.shift();
+    document.getElementById('currentRandomWord').innerText = randomWords[0];
 }
 
 // execGame(): function to run each game session
