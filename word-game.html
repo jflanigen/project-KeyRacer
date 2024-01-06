@@ -10,20 +10,19 @@
 
     <body>
         <script src="js-support.js"></script>
-        <fieldset class="headerbox">
-            <h1 class="header">Type Race</h1>
-        </fieldset>
+        
+        <div class="centerHeader">
+            <h1 class="header">Word Race</h1>
+        </div>
 
-
-        <div id="P_NUMREQ">
-            <label for="numInput">Number of words? (1-20)</label>
+        <div id="P_NUMREQ" class="flexCenter">
             <input type="number" id="numInput" name="numInput" min="1" max="20">
-            <button type="submit" id="NUMREQsubmit" onclick="switchToP_EXEC()"></button>
+            <label id="numInputLabel" for="numInput">Number of words? (1-20)</label>
+            <button type="submit" id="NUMREQsubmit" onclick="verifyInt()"></button>
         </div>
 
         <div id="timer" display="none"></div>
-
-        <div id="P_EXECGAME">
+        <div id="P_EXECGAME" class="flexCenter">
             <button id="execGame" name="execGame" onclick="timer()" style="display: none">start</button>
         </div>
 
@@ -48,6 +47,11 @@
             </div>
             <button type="submit" id="restartButton" onclick="location.reload()">restart</button>
         </div>
+
+        <p style="position: absolute; bottom: 0; left: 0; width: 100%; text-align: center;">project by joseph flanigen | joeyflan@bu.edu |
+            <a href="https://www.linkedin.com/in/joseph-flanigen-91b595236/">LinkedIn</a>
+        </p>
+
     </body>
 
 </html>

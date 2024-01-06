@@ -1,34 +1,26 @@
 html {
     font-family: Verdana;
+    color: azure;
 }
 
 body {
     overflow: hidden;
     height: 100vh;
-    background: linear-gradient(to top left, lightslategray, azure);
-    border-left: 4px solid rgba(40, 40, 40, 0.25);
-    border-right: 4px solid rgba(40, 40, 40, 0.25);
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-.headerbox {
-    border: 10px solid rgba(112, 112, 112, 0.9);
-    border-radius: 100%;
-    width: 50vw;
-    padding: 0;
-    background-color: maroon;
-    text-align: center;
-    text-align: center;
-    margin: 30px auto 10px;
+    background: linear-gradient(to bottom right, hsl(248, 60%, 60%), hsl(225, 80%, 60%));
+    border-left: 4px solid azure;
+    border-right: 4px solid azure;
+    padding: 15px;
 }
 
 .header {
-    text-align: center;
-    font-family: Verdana;
-    font-style: italic;
+    display: inline-block;
     color: azure;
     font-size: 60px;
+    border-bottom: 5px solid azure;
+}
+
+.centerHeader {
+    text-align: center;
 }
 
 .startButton {
@@ -77,4 +69,16 @@ body {
     background: transparent;
     border: none !important;
     font-size:0;
+}
+
+.flexCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+a{
+    color: azure;
+    text-decoration: none;
 }

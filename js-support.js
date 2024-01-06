@@ -46,6 +46,16 @@ var userWords = [];
 var currentRandomWord = '';
 var trav = 0;
 
+function verifyInt(){
+    let value = document.getElementById('numInput').value;
+    if(isNaN(value) || value < 1 || value > 20){
+        document.getElementById('numInputLabel').innerText = 'Your input must be an integer in range 1 to 20.'
+        value.value = '';
+    } else {
+        switchToP_EXEC();
+    }
+}
+
 /**
  *  switchToP_EXEC(): Triggered when on P_NUMREQ and after user has
  *                    has inputted their desired number of words.
