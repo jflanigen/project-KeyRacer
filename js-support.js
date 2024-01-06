@@ -9,6 +9,8 @@
 window.onload = function () {
     document.getElementById('P_EXECGAME').style.display = 'none';
     document.getElementById('P_RUNGAME').style.display = 'none';
+    document.getElementById('numInput').focus();
+    
 }
 
 // Random word API url
@@ -70,6 +72,7 @@ function execGame(){
 
     document.getElementById('P_EXECGAME').style.display = 'none';
     document.getElementById('P_RUNGAME').style.display = 'block';
+    document.getElementById('userInput').focus();
 
     // used for WPM calculations
     startTime = Date.now();
@@ -112,17 +115,17 @@ function submitUserWord() {
     }
 }
 
-const plurality = n => (n <= 1 ? ' word' : ' words');
-
 function endGame() {
     document.getElementById('currentRandomWord').innerText = '';
 
     let WPM = (userCharsTyped / 5) / ((Date.now() - startTime) / 60000);
     let ACC = numCharsCorrect / numChars;
     let NUM = document.getElementById('numInput').value;
+
+    const ifSingular = n => (n == 1 ? ' word' : ' words');
+    document.getElementById('NUM').innerText += NUM + ifSingular(NUM);
     document.getElementById('WPM').innerText += WPM;
     document.getElementById('ACC').innerText += Math.round((ACC * 100)) + '%';
-    document.getElementById('NUM').innerText += NUM + plurality(userWords.length);
 
     // display the above values and give restart option.
     document.getElementById('stats').style.display = 'inline-block';
@@ -132,4 +135,5 @@ function endGame() {
 function contGame(){
     randomWords.shift();
     document.getElementById('currentRandomWord').innerText = randomWords[0];
+    document.getElementById('userInput').focus();
 }
