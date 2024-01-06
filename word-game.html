@@ -21,22 +21,30 @@
             <button type="submit" id="NUMREQsubmit" onclick="switchToP_EXEC()"></button>
         </div>
 
+        <div id="timer" display="none"></div>
 
         <div id="P_EXECGAME">
-            <button id="execGame" name="execGame" onclick="execGame()">start</button>
-            <label for="execGame" class="buttonInstructions">(press enter or click)</label>
+            <button id="execGame" name="execGame" onclick="timer()" style="display: none">start</button>
         </div>
 
 
         <div id="P_RUNGAME">
-            <div id="currentRandomWord" class="generatedWord"></div>
+            <div id="container">
+                <div id="currentRandomWord" class="generatedWord"></div>
                 <input type="text" id="userInput">
                 <button type="submit" id="submitButton" onclick="submitUserWord()">submit</button>
-
+            </div>
+            
             <div id="stats" style="display: none">
-                <span id="WPM">WPM: </span>
-                <span id="ACC">Accuracy: </span>
-                <span id="NUM"></span>
+                <div id="wordCycle">
+                    <div id="displayCorrectWord" class="postGameWords"></div>
+                    <div id="displayUserWord" class="postGameWords"></div>
+                </div>
+                <div>
+                    <span id="WPM">WPM: </span>
+                    <span id="ACC">Accuracy: </span>
+                    <span id="NUM"></span>
+                </div>
             </div>
             <button type="submit" id="restartButton" onclick="location.reload()">restart</button>
         </div>
