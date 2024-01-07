@@ -1,11 +1,11 @@
 {
   "name": "project-keyracer",
   "version": "1.0.0",
-  "description": "dependencies for keyRacer project",
-  "main": "js-support.js",
+  "description": "",
+  "main": "start.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "serve -s build"
+    "start": "node start.js"
   },
   "repository": {
     "type": "git",
