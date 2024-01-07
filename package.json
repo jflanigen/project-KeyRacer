@@ -1,0 +1,34 @@
+{
+  "name": "project-keyracer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "start.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node start.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jflanigen/project-KeyRacer.git"
+  },
+  "keywords": [
+    "typing",
+    "keyboard",
+    "typing race",
+    "type game",
+    "type race",
+    "speed typing",
+    "keyboard race",
+    "typing practice",
+    "type"
+  ],
+  "author": "joseph-flanigen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jflanigen/project-KeyRacer/issues"
+  },
+  "homepage": "https://github.com/jflanigen/project-KeyRacer#readme",
+  "engines": {
+    "node": "18.16.0"
+  }
+}
