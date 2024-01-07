@@ -12,18 +12,20 @@
         <script src="js-support.js"></script>
         
         <div class="centerHeader">
-            <h1 class="header">Word Race</h1>
+            <h1 class="header">-KEY RACER-</h1>
         </div>
 
         <div id="P_NUMREQ" class="flexCenter">
+            <label class ="numInputLabel" id="numInputLabel" for="numInput">WORD COUNT?</label>
             <input type="number" id="numInput" name="numInput" min="1" max="20">
-            <label id="numInputLabel" for="numInput">Number of words? (1-20)</label>
-            <button type="submit" id="NUMREQsubmit" onclick="verifyInt()"></button>
+            <label class="numInputLabel" for="numInput">[1 TO 25]</label>
+            <button type="submit" id="NUMREQsubmit" onclick="verifyInt()">CONTINUE</button>
         </div>
 
         <div id="timer" display="none"></div>
         <div id="P_EXECGAME" class="flexCenter">
-            <button id="execGame" name="execGame" onclick="timer()" style="display: none">start</button>
+            <button id="execGame" name="execGame" onclick="timer()" style="display: none">START</button>
+            <div id="loading" style="display: none">loading...</div>
         </div>
 
 
@@ -39,13 +41,15 @@
                     <div id="displayCorrectWord" class="postGameWords"></div>
                     <div id="displayUserWord" class="postGameWords"></div>
                 </div>
-                <div>
-                    <span id="WPM">WPM: </span>
-                    <span id="ACC">Accuracy: </span>
-                    <span id="NUM"></span>
+                <div id="wall">
+                    <div id="WPM">WPM: </div>
+                    <div id="ACC">Accuracy: </div>
+                    <div id="NUM"></div>
                 </div>
             </div>
-            <button type="submit" id="restartButton" onclick="location.reload()">restart</button>
+            <div id="container">
+                <button type="submit" id="restartButton" onclick="location.reload()">RESTART</button>
+            </div>
         </div>
 
         <p style="position: absolute; bottom: 0; left: 0; width: 100%; text-align: center;">project by joseph flanigen | joeyflan@bu.edu |

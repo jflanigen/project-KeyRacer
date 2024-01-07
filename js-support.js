@@ -25,7 +25,8 @@ async function generateWord(api_url) {
         }
         const data = await response.json();
         console.log(data);
-        document.getElementById('execGame').style.display = "block";
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('execGame').style.display = 'block';
         return data;
     } catch (error) {
         console.error(error);
@@ -48,8 +49,8 @@ var trav = 0;
 
 function verifyInt(){
     let value = document.getElementById('numInput').value;
-    if(isNaN(value) || value < 1 || value > 20){
-        document.getElementById('numInputLabel').innerText = 'Your input must be an integer in range 1 to 20.'
+    if(isNaN(value) || value < 1 || value > 25){
+        document.getElementById('numInputLabel').innerText = 'INPUT MUST BE INTEGER WITHIN 1 AND 20'
         value.value = '';
     } else {
         switchToP_EXEC();
@@ -71,6 +72,7 @@ function switchToP_EXEC(){
     // display P_EXEC button 'page' and generate randomWords
     document.getElementById('P_NUMREQ').style.display = 'none';
     document.getElementById('P_EXECGAME').style.display = 'block';
+    document.getElementById('loading').style.display = 'block';
     
     // await generation of words then assign to randomWords
     generateWord(api_url).then(data => {
@@ -84,7 +86,7 @@ function switchToP_EXEC(){
 // execGame() will be executed after 'start' button is pressed and timer reaches 0.
 function timer(){
     document.getElementById('P_EXECGAME').style.display = 'none';
-    document.getElementById('timer').style.display = 'block'
+    document.getElementById('timer').style = 'display: flex; justify-content: center; align-items: center;'
     document.getElementById('timer').innerText = '3';
     let countdown = 2;
     const countdownTimer = setInterval(() => {
@@ -162,14 +164,13 @@ function endGame() {
     let NUM = document.getElementById('numInput').value;
     let WPM = ((numChars - (numChars - numCharsCorrect))/5) / ((Date.now() - startTime) / 60000);
 
-    const ifSingular = n => (n == 1 ? ' word' : ' words');
-    document.getElementById('NUM').innerText += NUM + ifSingular(NUM);
+    const ifSingular = n => (n == 1 ? 'Word: 1' : 'Words: ' + NUM);
+    document.getElementById('NUM').innerText = ifSingular(NUM);
     document.getElementById('WPM').innerText += Math.round(WPM);
     document.getElementById('ACC').innerText += Math.round((ACC * 100)) + '%';
 
     // display the above values and give restart option.
-    document.getElementById('stats').style.display = 'inline-block';
-    document.getElementById('restartButton').style.display = 'block';
+    document.getElementById('stats').style = 'block'
 
     // rotate through correct and user submitted words after the game below
     document.getElementById('displayCorrectWord').innerText = 'Correct Word\n' + randomWordsCopy[0];
