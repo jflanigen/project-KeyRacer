@@ -13,15 +13,21 @@
   "keywords": [
     "typing",
     "keyboard",
-    "race",
-    "game",
-    "type",
-    "speed"
+    "typing race",
+    "type game",
+    "type race",
+    "speed typing",
+    "keyboard race",
+    "typing practice",
+    "type"
   ],
   "author": "joseph-flanigen",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jflanigen/project-KeyRacer/issues"
   },
-  "homepage": "https://github.com/jflanigen/project-KeyRacer#readme"
+  "homepage": "https://github.com/jflanigen/project-KeyRacer#readme",
+  "engines": {
+    "node": "18.16.0"
+  }
 }
