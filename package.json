@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/jflanigen/project-KeyRacer#readme",
   "engines": {
-    "node": "18.16.0"
+    "node": "18.x"
   },
   "dependencies": {
     "open": "^10.0.3"
