@@ -1,15 +1,14 @@
 html {
     font-family: Verdana;
     color: azure;
+    border-left: 15vw solid rgba(255, 255, 255, .1);
+    border-right: 15vw solid rgba(255, 255, 255, .1);
 }
 
 body {
     overflow: hidden;
     height: 100vh;
-    background: linear-gradient(to bottom right, hsl(248, 90%, 60%), hsl(225, 80%, 60%));
-    border-left: 4px solid azure;
-    border-right: 4px solid azure;
-    padding: 15px;
+    background: linear-gradient(to bottom right, hsl(248, 90%, 60%), hsl(25, 80%, 60%));
 }
 
 .header {
