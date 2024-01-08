@@ -30,5 +30,8 @@
   "homepage": "https://github.com/jflanigen/project-KeyRacer#readme",
   "engines": {
     "node": "18.16.0"
+  },
+  "dependencies": {
+    "open": "^10.0.3"
   }
 }
