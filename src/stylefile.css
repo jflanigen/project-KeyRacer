@@ -1,8 +1,8 @@
 html {
     font-family: Verdana;
     color: azure;
-    border-left: 15vw solid rgba(255, 255, 255, .1);
-    border-right: 15vw solid rgba(255, 255, 255, .1);
+    border-left: 15vw solid azure;
+    border-right: 15vw solid azure;
 }
 
 body {
