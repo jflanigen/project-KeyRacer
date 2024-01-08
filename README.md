@@ -15,5 +15,4 @@ Once all words have been copied, post game menu will provide user with a cyclica
 A restart button will allow the user to return to the main menu and proceed with another session, if they so please.
 
 ### Development
-HTML, CSS, and JS using the Node.js framework. Deployed using Cyclic as a Node.js Express app.
-
+HTML, CSS, and JS in the Node.js runtime. Express.js as the web app framework and deployed with Cyclic
