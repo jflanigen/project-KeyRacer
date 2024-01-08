@@ -8,7 +8,7 @@ html {
 body {
     overflow: hidden;
     height: 100vh;
-    background: linear-gradient(to bottom right, hsl(248, 90%, 60%), hsl(25, 80%, 60%));
+    background: linear-gradient(to bottom right, hsl(198, 90%, 60%), hsl(290, 80%, 60%));
 }
 
 .header {
@@ -82,7 +82,7 @@ button[type="submit"]:not(#submitButton) {
     padding: 5 10px;
     background-color: azure;
     border: none;
-    color: hsl(248, 90%, 60%);
+    color: hsl(260, 60%, 60%);
     font-size: 48px;
     font-family: system-ui;
     margin: 5% auto;
@@ -97,7 +97,7 @@ button[type="submit"]:not(#submitButton) {
     padding: 5 10px;
     background-color: azure;
     border: none;
-    color: hsl(248, 90%, 60%);
+    color: hsl(260, 60%, 60%);
     font-size: 48px;
     font-family: system-ui;
     font-weight: bold;
