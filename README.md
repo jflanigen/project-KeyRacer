@@ -1,6 +1,6 @@
 # Key Racer Project
 **Personal project by Joseph Flanigen, '26 at Boston University.**
-play here: https://wordracer.cyclic.app](https://keyracer-project.onrender.com/
+play here: https://keyracer-project.onrender.com/
 
 ### How to play
 Type racing game. User is prompted to choose from lengths of 1 through 25 for their set of words
