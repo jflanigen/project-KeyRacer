@@ -42,7 +42,7 @@ var trav = 0;
  */
 function verifyInt(){
     let value = document.getElementById('numInput').value;
-    if(isNaN(value) || value < 1 || value > 25){
+    if(!(Number.isInteger(value)) || value < 1 || value > 25){
         document.getElementById('numInputLabel').innerText = 'INPUT MUST BE INTEGER WITHIN 1 AND 25'
         value.value = '';
     } else {
