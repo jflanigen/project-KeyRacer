@@ -1,6 +1,6 @@
 # Key Racer Project
 **Personal project by Joseph Flanigen, '26 at Boston University.**
-play here: https://wordracer.cyclic.app
+play here: https://keyracer-project.onrender.com/
 
 ### How to play
 Type racing game. User is prompted to choose from lengths of 1 through 25 for their set of words
@@ -15,4 +15,4 @@ Once all words have been copied, post game menu will provide user with a cyclica
 A restart button will allow the user to return to the main menu and proceed with another session, if they so please.
 
 ### Development
-HTML, CSS, and JS in the Node.js runtime. Express.js as the web app framework and deployed with Cyclic
+HTML, CSS, and JS in the Node.js runtime. Express.js as the web app framework and deployed with Render
